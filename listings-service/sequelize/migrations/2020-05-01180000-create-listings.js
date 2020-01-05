@@ -17,27 +17,23 @@ module.exports = {
           allowNull: false,
           type: DataTypes.TEXT,
         },
-        created_at: {
-          allowNull: false,
-          type: DataTypes.DATE,
-          defaultValue: Date.now(),
-        },
-        updated_at: {
+        createdAt: {
           allowNull: false,
           type: DataTypes.DATE,
         },
-        deleted_at: {
+        updatedAt: {
+          allowNull: false,
+          type: DataTypes.DATE,
+        },
+        deletedAt: {
           allowNull: true,
           type: DataTypes.DATE,
         },
       },
       {
         charset: 'utf8',
-        timestamps: true,
       },
     )
   },
-  down: (queryInterface, DataTypes) => {
-    return queryInterface.dropTable('listings')
-  },
+  down: queryInterface => queryInterface.dropTable('listings'),
 }
