@@ -1,0 +1,27 @@
+version: '3'
+services:
+  listings-service:
+    build: './listings-service'
+    depends_on:
+      - listings-service-db
+    volumes:
+      - ./listings-service:/opt/app
+
+  listings-service-db:
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=db
+    image: postgres:9.6.16
+
+  users-service:
+    build: './users-service'
+    depends_on:
+      - users-service-db
+    volumes:
+      - ./users-service:/opt/app
+
+  users-service-db:
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=db
+    image: postgres:9.6.16

@@ -12,12 +12,12 @@
     "pretty-quick": "^2.0.1",
     "yorkie": "^2.0.0"
   },
-   "gitHooks": {
+  "gitHooks": {
     "pre-commit": "lint-staged",
     "commit-msg": "node scripts/verify-commit-msg.js"
   },
   "lint-staged": {
-    "*.{js,vue}": [
+    "*.{js,jsx}": [
       "pretty-quick --staged",
       "git add"
     ]
