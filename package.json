@@ -1,0 +1,25 @@
+{
+  "name": "test-microservices",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jetaimefrc/test-microservices.git",
+  "author": "Demons Light <jetaimefrc@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chalk": "^3.0.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "yorkie": "^2.0.0"
+  },
+   "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verify-commit-msg.js"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "pretty-quick --staged",
+      "git add"
+    ]
+  }
+}
