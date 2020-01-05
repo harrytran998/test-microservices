@@ -1,9 +1,11 @@
 {
-  "name": "listings-service",
+  "name": "users-service",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate:undo",
     "watch": "babel-watch -L src/index.js"
   },
   "devDependencies": {
@@ -13,6 +15,8 @@
     "@babel/core": "^7.7.7",
     "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.7",
-    "babel-plugin-module-resolver": "^4.0.0"
+    "babel-plugin-module-resolver": "^4.0.0",
+    "pg": "^7.17.0",
+    "pg-hstore": "^2.3.3"
   }
 }
