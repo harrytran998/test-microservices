@@ -20,6 +20,7 @@ module.exports = {
         created_at: {
           allowNull: false,
           type: DataTypes.DATE,
+          defaultValue: Date.now(),
         },
         updated_at: {
           allowNull: false,
@@ -32,6 +33,7 @@ module.exports = {
       },
       {
         charset: 'utf8',
+        timestamps: true,
       },
     )
   },
