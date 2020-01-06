@@ -9,7 +9,7 @@ module.exports = {
             primaryKey: true,
             type: DataTypes.UUID,
           },
-          user_id: {
+          userId: {
             type: DataTypes.UUID,
             allowNull: false,
             references: {
@@ -19,12 +19,22 @@ module.exports = {
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE',
           },
-          expires_at: {
+          expiresAt: {
             allowNull: false,
             type: DataTypes.DATE,
           },
-          created_at: {
+          createdAt: {
             allowNull: false,
+            type: DataTypes.DATE,
+            defaultValue: Date.now(),
+          },
+          updatedAt: {
+            allowNull: true,
+            type: DataTypes.DATE,
+            defaultValue: Date.now(),
+          },
+          deletedAt: {
+            allowNull: true,
             type: DataTypes.DATE,
             defaultValue: Date.now(),
           },

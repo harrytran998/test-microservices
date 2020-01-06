@@ -20,18 +20,20 @@ module.exports = {
             type: DataTypes.STRING,
             allowNull: true,
           },
-          created_at: {
+          createdAt: {
             allowNull: false,
             type: DataTypes.DATE,
             defaultValue: Date.now(),
           },
-          updated_at: {
-            allowNull: false,
-            type: DataTypes.DATE,
-          },
-          deleted_at: {
+          updatedAt: {
             allowNull: true,
             type: DataTypes.DATE,
+            defaultValue: Date.now(),
+          },
+          deletedAt: {
+            allowNull: true,
+            type: DataTypes.DATE,
+            defaultValue: Date.now(),
           },
         },
         {
