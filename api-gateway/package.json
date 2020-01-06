@@ -7,7 +7,7 @@
     "watch": "babel-watch -L src/index.js"
   },
   "devDependencies": {
-    "babel-watch": "^7.0.0"
+    "babel-watch": "7.0.0"
   },
   "dependencies": {
     "@babel/core": "^7.7.7",
