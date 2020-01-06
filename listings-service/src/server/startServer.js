@@ -16,13 +16,6 @@ app.use(
   cors({
     origin: (origin, cb) => cb(null, true),
     credentials: true,
-    preflightContinue: true,
-    exposedHeaders: [
-      'Access-Control-Allow-Headers',
-      'Access-Control-Allow-Origin, Origin, X-Requested-With, Content-Type, Accept',
-      'X-Password-Expired',
-    ],
-    optionsSuccessStatus: 200,
   }),
 )
 
@@ -34,6 +27,6 @@ app.use((err, req, res, next) => {
   })
 })
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
   console.info(`Listings service listening on ${PORT}`)
 })
