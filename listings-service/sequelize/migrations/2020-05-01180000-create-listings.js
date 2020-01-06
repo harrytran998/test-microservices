@@ -7,7 +7,7 @@ module.exports = {
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
-          type: DataTypes.INTEGER.UNSIGNED,
+          type: DataTypes.INTEGER,
         },
         title: {
           allowNull: false,
@@ -20,14 +20,17 @@ module.exports = {
         createdAt: {
           allowNull: false,
           type: DataTypes.DATE,
+          defaultValue: Date.now(),
         },
         updatedAt: {
-          allowNull: false,
+          allowNull: true,
           type: DataTypes.DATE,
+          defaultValue: Date.now(),
         },
         deletedAt: {
           allowNull: true,
           type: DataTypes.DATE,
+          defaultValue: Date.now(),
         },
       },
       {
