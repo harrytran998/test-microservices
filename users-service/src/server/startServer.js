@@ -6,7 +6,7 @@ import accessEnv from '#root/helpers/accessEnv'
 
 import setupRoutes from './routes'
 
-const PORT = accessEnv('PORT', 7100)
+const PORT = accessEnv('PORT', 7101)
 
 const app = express()
 
@@ -28,5 +28,5 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(PORT, () => {
-  console.info(`Listings service listening on ${PORT}`)
+  console.info(`Users service listening on ${PORT}`)
 })
