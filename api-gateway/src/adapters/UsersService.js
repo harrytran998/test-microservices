@@ -12,4 +12,13 @@ export default class UsersService {
     const body = await got.get(`${USERS_SERVICE_API}/users/${userId}`).json()
     return body
   }
+
+  static async createUserSession({ email, password }) {
+    let { userSession, user } = await got
+      .post(`${USERS_SERVICE_API}/sessions`, { json: { email, password } })
+      .json()
+    userSession.user = user
+    console.log(userSession)
+    return userSession
+  }
 }
