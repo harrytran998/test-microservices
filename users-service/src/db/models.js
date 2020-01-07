@@ -51,7 +51,7 @@ UserSession.init(
     },
   },
   {
-    modelName: 'userSessions',
+    modelName: 'user_sessions',
     paranoid: false,
     sequelize,
     updatedAt: false,
