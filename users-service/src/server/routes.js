@@ -55,8 +55,7 @@ const setupRoutes = app => {
         userId: user.id,
         expiresAt,
       })
-
-      return res.json(userSession)
+      return res.json({ userSession, user })
     } catch (e) {
       return next(e)
     }
