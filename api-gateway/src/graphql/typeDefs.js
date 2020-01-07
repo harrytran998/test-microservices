@@ -6,8 +6,16 @@ const typeDefs = gql`
     description: String!
     title: String!
   }
+  type User {
+    id: ID!
+    email: String!
+  }
   type Query {
     listings: [Listing!]!
+    users: [User!]!
+  }
+  type Mutation {
+    createUser(email: String!, password: String!): User!
   }
 `
 
