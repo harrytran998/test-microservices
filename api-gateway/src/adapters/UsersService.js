@@ -18,7 +18,11 @@ export default class UsersService {
       .post(`${USERS_SERVICE_API}/sessions`, { json: { email, password } })
       .json()
     userSession.user = user
-    console.log(userSession)
     return userSession
+  }
+
+  static async fetchUserSession({ sessionId }) {
+    const body = await got.get(`${USERS_SERVICE_API}/sessions/${sessionId}`).json()
+    return body
   }
 }
