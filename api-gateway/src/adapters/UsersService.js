@@ -25,4 +25,9 @@ export default class UsersService {
     const body = await got.get(`${USERS_SERVICE_API}/sessions/${sessionId}`).json()
     return body
   }
+
+  static async deleteUserSession({ sessionId }) {
+    const body = await got.delete(`${USERS_SERVICE_API}/sessions/${sessionId}`).json()
+    return body
+  }
 }
