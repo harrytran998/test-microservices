@@ -1,6 +1,6 @@
 const userSessionResolver = async (obj, args, { res }) => {
   if (args.me !== true) throw new Error('Unsupported argument value')
-  return context.res.locals.userSession
+  return res.locals.userSession
 }
 
 export default userSessionResolver
