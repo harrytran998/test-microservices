@@ -14,9 +14,8 @@ Uses the following technologies:
 # in main directory
 docker-compose up
 
-# in a separate terminal, inside classifieds-app
-yarn
-yarn watch
+# in a separate terminal, inside client-app
+yarn && yarn watch
 ```
 
 ## Deploy
