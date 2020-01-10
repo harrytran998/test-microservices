@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from './node_modules/styled-components'
 
 const TextInput = styled.input`
   border: 1px solid ${props => props.theme.veryLightGrey};
