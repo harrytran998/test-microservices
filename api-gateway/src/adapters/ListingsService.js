@@ -3,9 +3,9 @@ import got from 'got'
 const LISTINGS_SERVICE_URI = 'http://listings-service:7100'
 
 export default class ListingsService {
-  static async createListing({ description, title }) {
+  static async createListings({ title, description }) {
     const body = await got
-      .post(`${LISTINGS_SERVICE_URI}/listings`, { json: { description, title } })
+      .post(`${LISTINGS_SERVICE_URI}/listings`, { json: { title, description } })
       .json()
     return body
   }
