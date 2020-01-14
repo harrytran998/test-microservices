@@ -1,4 +1,4 @@
-import styled from './node_modules/styled-components'
+import styled from 'styled-components'
 
 const Textarea = styled.textarea`
   border: 1px solid ${props => props.theme.veryLightGrey};
@@ -10,4 +10,4 @@ const Textarea = styled.textarea`
   width: 100%;
 `
 
-export default TextArea
+export default Textarea
