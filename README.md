@@ -8,7 +8,7 @@ Uses the following technologies:
 - PostgresQL
 - Sequelize
 
-## Setup
+## Run Local
 
 ```sh
 # in main directory
@@ -19,3 +19,7 @@ yarn && yarn watch
 ```
 
 ## Deploy
+
+Use AWS
+
+![Structure](https://i.imgur.com/2plmOfn.png)
