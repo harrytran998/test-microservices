@@ -1,12 +1,11 @@
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import React from 'react'
-import useForm from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
+import * as yup from 'yup'
 
 import TextInput from '#root/components/shared/TextInput'
-import { setSession } from '#root/store/ducks/session'
 
 const Label = styled.label`
   display: block;
@@ -21,7 +20,7 @@ const LabelText = styled.strong`
   margin-bottom: 0.25rem;
 `
 
-const LoginButton = styled.button`
+const SignUpButton = styled.button`
   display: inline-block;
   margin-top: 0.5rem;
 `
@@ -32,30 +31,39 @@ const OrSignUp = styled.span`
 
 const mutation = gql`
   mutation($email: String!, $password: String!) {
-    createUserSession(email: $email, password: $password) {
+    createUser(email: $email, password: $password) {
       id
-      user {
-        email
-        id
-      }
     }
   }
 `
 
-const Login = ({ onChangeToSignUp: pushChangeToSignUp }) => {
-  const dispatch = useDispatch()
+const validationSchema = yup.object().shape({
+  email: yup.string().required(),
+  password: yup
+    .string()
+    .required()
+    .test(
+      'sameAsConfirmPassword',
+      '${path} is not the same as the confirmation password',
+      function() {
+        return this.parent.password === this.parent.confirmPassword
+      },
+    ),
+})
+
+const SignUp = ({ onChangeToLogin: pushChangeToLogin }) => {
   const {
-    formState: { isSubmitting },
+    formState: { isSubmitting, isValid },
     handleSubmit,
     register,
-  } = useForm()
-  const [createUserSession] = useMutation(mutation)
+    reset,
+  } = useForm({ mode: 'onChange', validationSchema })
+  const [createUser] = useMutation(mutation)
 
   const onSubmit = handleSubmit(async ({ email, password }) => {
-    const {
-      data: { createUserSession: createdSession },
-    } = await createUserSession({ variables: { email, password } })
-    dispatch(setSession(createdSession))
+    await createUser({ variables: { email, password } })
+    reset()
+    pushChangeToLogin()
   })
 
   return (
@@ -68,23 +76,27 @@ const Login = ({ onChangeToSignUp: pushChangeToSignUp }) => {
         <LabelText>Password</LabelText>
         <TextInput disabled={isSubmitting} name="password" type="password" ref={register} />
       </Label>
-      <LoginButton disabled={isSubmitting} type="submit">
-        Login
-      </LoginButton>{' '}
+      <Label>
+        <LabelText>Confirm Password</LabelText>
+        <TextInput disabled={isSubmitting} name="confirmPassword" type="password" ref={register} />
+      </Label>
+      <SignUpButton disabled={isSubmitting || !isValid} type="submit">
+        Sign Up
+      </SignUpButton>{' '}
       <OrSignUp>
         or{' '}
         <a
           href="#"
           onClick={evt => {
             evt.preventDefault()
-            pushChangeToSignUp()
+            pushChangeToLogin()
           }}
         >
-          Sign Up
+          Login
         </a>
       </OrSignUp>
     </form>
   )
 }
 
-export default Login
+export default SignUp

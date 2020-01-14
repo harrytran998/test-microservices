@@ -6,7 +6,8 @@ import styled from 'styled-components'
 import graphqlClient from '#root/api/graphqlClient'
 import { setSession } from '#root/store/ducks/session'
 
-import AccountDetail from './AccountDetail'
+import AccountDetails from './AccountDetails'
+import Listings from './Listings'
 
 const query = gql`
   {
@@ -62,9 +63,11 @@ const Root = () => {
   return (
     <Wrapper>
       <Container>
-        <Content>XXX</Content>
+        <Content>
+          <Listings />
+        </Content>
         <Sidebar>
-          <AccountDetail />
+          <AccountDetails />
         </Sidebar>
       </Container>
     </Wrapper>
