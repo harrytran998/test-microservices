@@ -1,7 +1,8 @@
-import get from '#root/helpers/getLodash'
+import get from 'lodash.get'
 
 const formatGraphQLErrors = error => {
   const errorDetails = get(error, 'originalError.response.body')
+  console.log(errorDetails)
   try {
     if (errorDetails) return JSON.parse(errorDetails)
   } catch (e) {}

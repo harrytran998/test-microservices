@@ -14,7 +14,7 @@ const PORT = accessEnv('PORT', 7000)
 
 const apolloServer = new ApolloServer({
   context: fuck => fuck,
-  formatError: formatGraphQLErrors,
+  // formatError: formatGraphQLErrors,
   resolvers,
   typeDefs,
 })
